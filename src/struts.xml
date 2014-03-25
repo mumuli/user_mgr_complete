@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.action.extension" value="do"/>
+
+    <package name="default" namespace="/" extends="struts-default">
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="list">/list.jsp</result>
+			<result name="list_load" type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">user_list</param>
+				<param name="page">${page}</param>
+				<param name="pageSize">${pageSize}</param>
+				<param name="msg">${msg}</param>
+			</result>
+			<result name="load">/load.jsp</result>
+			<result name="load_load" type="redirectAction">
+				<param name="namespace">/</param>
+				<param name="actionName">user_load</param>
+				<param name="uids">${user.id}</param>
+			</result>
+			<result name="input">/add.jsp</result>
+		</action>
+    </package>
+</struts>

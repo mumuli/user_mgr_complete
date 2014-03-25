@@ -1,0 +1,16 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="net.vzhang.po">
+	<class name="Group" table="t_group">
+		<id name="id" column="gid">
+			<generator class="native"/>
+		</id>
+		<property name="name" not-null="true" length="50"/>
+		<set name="users">
+			<key column="gid" foreign-key="fk_user_gid_group_gid"/>
+			<one-to-many class="User"/>
+		</set>
+	</class>
+</hibernate-mapping>
